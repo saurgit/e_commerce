@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { userRequest } from "../requestMethods";
+import { teal } from "@mui/material/colors";
 
 const Success = () => {
 
@@ -55,7 +56,7 @@ const Success = () => {
         ? `Order has been created successfully. Your order number is ${orderId}`
         : `Successfull. Your order is being prepared...`}
       <a href="/">
-        <button style={{ padding: 10, marginTop: 20 }}>Go to Homepage</button>
+        <button style={{ padding: 10, marginTop: 20,color:teal }}>Go to Homepage</button>
       </a>
     </div>
   );

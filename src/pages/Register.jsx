@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { Link as LINK } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -54,7 +55,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 const Link = styled.a`
-    display:block;
+  display:block;
   margin-top: 10px;
   font-size: 13 px;
   text-decoration: underline;
@@ -79,7 +80,7 @@ const Register = () => {
           </Agreement>
           <Button>CREATE</Button>
         </Form>
-        <Link href="/login">Already have an Account?</Link>
+        <Link> <LINK to="/register" style={{textDecoration:"none"}}>Already have an Account?</LINK></Link>
       </Wrapper>
     </Container>
   );

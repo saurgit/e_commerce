@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { login } from "../redux/apiCalls";
 import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
+import { Link as LINK } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -98,7 +99,7 @@ const Login = () => {
           </Button>
           {error && <Error>Something went wrong...</Error>}
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link href="/register">CREATE A NEW ACCOUNT</Link>
+          <LINK to="/register" style={{textDecoration:"none",cursor:"pointer"}}>CREATE A NEW ACCOUNT</LINK>
         </Form>
       </Wrapper>
     </Container>

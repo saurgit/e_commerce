@@ -100,12 +100,12 @@ const Navbar = () => {
           <Logo>Saurabh</Logo>
         </Center>
         <Right>
-          <A href='/register'>
+          <Link to='/register' style={{textDecoration:"none"}}>
             <MenuItem>REGISTER</MenuItem>
-          </A>
-          <A href="/login">
+          </Link>
+          <Link to="/login" style={{textDecoration:"none"}}>
             <MenuItem>SIGN IN</MenuItem>
-          </A>
+          </Link>
           <MenuItem onClick={handleClick}>LOGOUT</MenuItem>
           <Link to="/cart">
             <MenuItem>

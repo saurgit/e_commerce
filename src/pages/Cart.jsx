@@ -206,7 +206,8 @@ const Cart = () => {
     const headers={
       "Content-type":"application/json"
     }
-    const res=await fetch("http://localhost:5000/api/checkout/payment",{
+    // export const BASE_URL ="https://e-commerce-api-7yrk.onrender.com/api/"
+    const res=await fetch(`https://e-commerce-api-7yrk.onrender.com/api/checkout/payment`,{
       method:"POST",
       headers:headers,
       body:JSON.stringify(body)
