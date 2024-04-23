@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api/";
+// const BASE_URL = "http://localhost:5000/api/";
+export const BASE_URL ="https://e-commerce-api-7yrk.onrender.com/api/"
 // const TOKEN =
 //   JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
 //     .accessToken || "";
