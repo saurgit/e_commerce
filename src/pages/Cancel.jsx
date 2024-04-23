@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Container=styeled.div`
+const Container=styled.div`
 width:100vw;
 height:100vh;
 display:flex;
