@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { Link as LINK } from "react-router-dom";
-import { useEffect,useState } from "react";
+import { useState,useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/apiCalls";
 import { publicRequest } from "../requestMethods";
-import {useDispatch} from "react-redux"
+
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -39,6 +40,7 @@ const Form = styled.form`
 const Input = styled.input`
   flex: 1;
   min-width: 40%;
+  max-width:46%;
   margin: 20px 10px 0px 0px;
   padding: 10px;
 `;
@@ -57,7 +59,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 const Link = styled.a`
-  display:block;
+    display:block;
   margin-top: 10px;
   font-size: 13 px;
   text-decoration: underline;
@@ -81,7 +83,7 @@ const Register = () => {
       }else if(fullname && email && username && password){
         const register=async ()=>{
           const res= await publicRequest.post("/auth/register",{username,password1,fullname,email});
-          // console.log(res.data)
+          console.log(res.data)
           if(res.data){
             login(dispatch,{username,password})
           }
@@ -92,6 +94,17 @@ const Register = () => {
       res.status(500).json(err)
     }
   }
+  // useEffect(()=>{
+  //   if(error){
+      
+  //   }
+  //   const register=async ()=>{
+  //     try{
+  //       const res=await publicRequest.post("/register",{username,password,name,email})
+  //     }catch(err){}
+  //   }
+  //   username && password && name && email && password1===password && register();
+  // },[])
   return (
     <Container>
       <Wrapper>

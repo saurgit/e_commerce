@@ -37,10 +37,18 @@ const Select = styled.select`
   ${mobile({ margin: "10px 0px" })}
 `;
 const Option = styled.option``;
+const Button=styled.button`
+  color:black;
+  background-color:red;
+  border-radius:2px;
+  padding:11px;
+  border:none;
+  font-weight:600;
+`
 
 const ProductList = () => {
   const location = useLocation();
-  const cat = location.pathname.split("/")[2];
+  let cat = location.pathname.split("/")[2];
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("newest");
 
@@ -51,6 +59,11 @@ const ProductList = () => {
       [e.target.name]: value,
     });
   };
+  const handleClick=()=>{
+    // cat = location.pathname.split("/")[2];
+    setFilters({});
+    setSort("newest")
+  }
 
   return (
     <Container>
@@ -77,6 +90,7 @@ const ProductList = () => {
             <Option>L</Option>
             <Option>XL</Option>
           </Select>
+          <Button onClick={handleClick}>Clear Filter</Button>
         </Filter>
         <Filter>
           <FilterText>Sort Products:</FilterText>
