@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link as LINK } from "react-router-dom";
+import { useEffect } from "react";
+import { publicRequest } from "../requestMethods";
 
 const Container = styled.div`
   width: 100vw;
@@ -63,24 +65,52 @@ const Link = styled.a`
 `;
 
 const Register = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [fullname, setname] = useState("");
+  const [password1, setPassword1] = useState("");
+  const [email,setEmail]=useState("");
+  let error=false;
+  const dispatch=useDispatch();
+  const handleClick=(e)=>{
+    e.preventDefault()
+
+    try{
+      if(password1!==password){
+        alert("password mismatch")
+      }else if(fullname && email && username && password){
+        const register=async ()=>{
+          const res= await publicRequest.post("/auth/register",{username,password1,fullname,email});
+          // console.log(res.data)
+          if(res.data){
+            login(dispatch,{username,password})
+          }
+        }
+        register()
+      }
+    }catch(err){
+      res.status(500).json(err)
+    }
+  }
   return (
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form>
-          <Input placeholder="name" type="text"/>
-          <Input placeholder="last name" type="text"/>
-          <Input placeholder="username" type="text" />
-          <Input placeholder="email" type="email"/>
-          <Input placeholder="password" type="password" style={{fontFamily:"Verdana"}}/>
-          <Input placeholder="confirm password" type="password" style={{fontFamily:"Verdana"}}/>
+          <Input placeholder="name" type="text" onChange={(e)=>setname(e.target.value)}/>
+          {/* <Input placeholder="last name" type="text" onChange={(e)=>}/> */}
+          <Input placeholder="username" type="text" onChange={(e)=>setUsername(e.target.value)} />
+
+          <Input placeholder="email" type="email" onChange={(e)=>setEmail(e.target.value)} />
+          <Input placeholder="password" type="password" style={{fontFamily:"Verdana"}} onChange={(e)=>setPassword(e.target.value)} />
+          <Input placeholder="confirm password" type="password" style={{fontFamily:"Verdana"}} onChange={(e)=>setPassword1(e.target.value)}/>
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button>CREATE</Button>
+          <Button onClick={handleClick}>CREATE</Button>
         </Form>
-        <Link> <LINK to="/login" style={{textDecoration:"none"}}>Already have an Account?</LINK></Link>
+        <Link href="/login">Already have an Account?</Link>
       </Wrapper>
     </Container>
   );

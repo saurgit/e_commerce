@@ -81,10 +81,14 @@ color:black;
 
 const Navbar = () => {
   const quantity = useSelector(state => state.cart.quantity)
+  const user = useSelector(state => state.user.currentUser)
   const dispatch = useDispatch()
 
   const handleClick = () => {
-    logout(dispatch)
+    let cnf = confirm("You are logging out")
+    if (cnf) {
+      logout(dispatch)
+    }
   }
   return (
     <Container>
