@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link as LINK } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { publicRequest } from "../requestMethods";
-
+import {useDispatch} from "react-redux"
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
