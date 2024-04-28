@@ -56,7 +56,7 @@ const Success = () => {
         ? `Order has been created successfully. Your order number is ${orderId}`
         : `Successfull. Your order is being prepared...`}
       <a href="/">
-        <button style={{ padding: 10, marginTop: 20,backgroundColor:teal }}>Go to Homepage</button>
+        <button style={{ padding: "10px", marginTop: "20px",backgroundColor:"teal" }}>Go to Homepage</button>
       </a>
     </div>
   );
